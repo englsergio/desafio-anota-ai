@@ -9,14 +9,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 
-@Document(collation = "products")
+@Document(collection = "products")
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
 public class Product {
     @org.springframework.data.annotation.Id
-    private String Id;
+    private String id;
     private String title;
     private String description;
     private String ownerId;

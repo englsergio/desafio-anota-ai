@@ -31,7 +31,7 @@ public class CategoryService {
     }
 
     public CategoryDTO update(String id, CategoryDTO dto) throws CategoryNotFoundException {
-        this.findById(id).orElseThrow(CategoryNotFoundException::new);
+        this.repository.findById(id).orElseThrow(CategoryNotFoundException::new);
         Category category = mapper.toEntity(dto);
         category.setId(id);
         return mapper.toDTO(repository.save(category));

@@ -1,5 +1,6 @@
 package com.lsalmeida.desafioanotaai.service;
 
+import com.lsalmeida.desafioanotaai.domain.category.Category;
 import com.lsalmeida.desafioanotaai.domain.product.Product;
 import com.lsalmeida.desafioanotaai.domain.product.ProductDTO;
 import com.lsalmeida.desafioanotaai.exception.CategoryNotFoundException;
@@ -29,14 +30,16 @@ public class ProductService {
     }
 
     public ProductDTO insert(ProductDTO dto) throws CategoryNotFoundException {
-        categoryService.findById(dto.getCategory().getId()).orElseThrow(CategoryNotFoundException::new);
+        Optional<Category> optionalCategory = categoryService.findById(dto.getCategory().getId());
+        optionalCategory.orElseThrow(CategoryNotFoundException::new);
+        dto.setCategory(optionalCategory.get());
         return mapper.toDTO(productRepository.insert(mapper.toEntity(dto)));
     }
 
-    public ProductDTO update(ProductDTO dto, String id) throws CategoryNotFoundException, ProductNotFoundException {
+    public ProductDTO update(ProductDTO dto, String id) throws ProductNotFoundException {
         productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
-        categoryService.findById(dto.getCategory().getId()).orElseThrow(CategoryNotFoundException::new);
         Product entity = mapper.toEntity(dto);
+        categoryService.findById(dto.getCategory().getId()).ifPresent(entity::setCategory);
         entity.setId(id);
         return mapper.toDTO(productRepository.save(entity));
     }

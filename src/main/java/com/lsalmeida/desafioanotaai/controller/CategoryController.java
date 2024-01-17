@@ -19,7 +19,7 @@ public class CategoryController {
     private final CategoryService service;
 
     @GetMapping("/id")
-    public ResponseEntity<Category> findById(@RequestParam String id) {
+    public ResponseEntity<Category> findById(@RequestParam(name = "id") String id) {
         return ResponseEntity.of(service.findById(id));
     }
 
@@ -34,7 +34,7 @@ public class CategoryController {
     }
 
     @PutMapping
-    public ResponseEntity<CategoryDTO> update(@RequestParam String id, @RequestBody CategoryDTO dto)
+    public ResponseEntity<CategoryDTO> update(@RequestParam(name = "id") String id, @RequestBody CategoryDTO dto)
             throws CategoryNotFoundException {
         return ResponseEntity.ok(service.update(id, dto));
     }

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.lsalmeida</groupId>
 	<artifactId>desafio-anota-ai</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>desafio-anota-ai</name>
 	<description>Description</description>
 	<properties>

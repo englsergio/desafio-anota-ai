@@ -3,7 +3,7 @@ package com.lsalmeida.desafioanotaai.domain.category;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "categories")
+@Document(collection = "category")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 public class Category {
     @org.springframework.data.annotation.Id
-    private String Id;
+    private String id;
     private String title;
     private String description;
     private String ownerId;
