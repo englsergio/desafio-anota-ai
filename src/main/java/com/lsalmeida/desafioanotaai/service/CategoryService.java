@@ -5,6 +5,7 @@ import com.lsalmeida.desafioanotaai.domain.category.CategoryDTO;
 import com.lsalmeida.desafioanotaai.exception.CategoryNotFoundException;
 import com.lsalmeida.desafioanotaai.mapper.ApplicationMapper;
 import com.lsalmeida.desafioanotaai.repository.CategoryRepository;
+import com.lsalmeida.desafioanotaai.service.aws.AwsSnsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

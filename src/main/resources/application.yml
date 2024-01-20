@@ -1,0 +1,8 @@
+aws:
+  accessKeyId:
+  secretKey:
+  region: us-east-1
+  sns:
+    topic:
+      catalog:
+        arn:
